@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head.ejs')  %> 
+
+<body>
+    <%- include('../partials/nav.ejs')  %> 
+    <div class="details content">
+        <h2><%=blog.title  %> </h2>
+        <div class="content">
+            <p><%= blog.body %> </p>
+        </div>
+        <a class="update" href="/blogs/update/<%= blog._id%>" >Update</a>
+        <a class="delete" data-delete="<%= blog._id %> ">Delete</a>
+    </div>
+
+    <%- include('../partials/footer.ejs')  %> 
+
+    <script>
+        // const update= document.querySelector('a.update');
+        // update.addEventListener('click', (evn) => {
+        // const updatepoint=`/blogs/${update.dataset.update}`
+        // fetch(updatepoint, {
+        // method:'POST'
+        // })
+        // .then((resp) => resp.json())
+        // .then((dat) => window.location.href=dat.redirect)
+        // .catch((err)=> console.log(err));
+        // })
+        
+        const trashcan = document.querySelector('a.delete');
+        trashcan.addEventListener('click',(e) =>{
+        const endpoint = `/blogs/${trashcan.dataset.delete}`
+
+        fetch(endpoint, {
+            method:'DELETE'
+        })
+        .then((response) => response.json())
+        .then((data)=> window.location.href= data.redirect)
+        .catch((err)=> console.log(err));
+        })
+    </script>
+</body>
+</html>
