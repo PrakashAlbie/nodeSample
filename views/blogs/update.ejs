@@ -3,9 +3,7 @@
 <%- include('../partials/head')  %> 
 <body>
     <%- include('../partials/nav')  %>
-
     <div class="create-blog content">
-        
         <form action="/blogs/update/<%=blogs._id  %> " method="POST">
             <label for="title">Blog title:</label>
             <input type="text" id="title" name= "title"  value="<%=blogs.title %>"  required>
@@ -15,12 +13,7 @@
             <textarea id="body"   name= "body" required><%=blogs.body %></textarea>
             <button>Update</button>
         </form>
-
     </div>
-
-
-
-
 </body>
 <%- include('../partials/footer')  %>
 </html>
